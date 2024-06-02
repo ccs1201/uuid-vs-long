@@ -12,4 +12,5 @@ import org.springframework.stereotype.Component;
 public class ConfigBean {
     private int qtd_produtos;
     private int batch_size;
+    private int threads;
 }

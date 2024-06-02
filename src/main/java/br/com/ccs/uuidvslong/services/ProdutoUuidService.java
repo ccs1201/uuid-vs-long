@@ -20,8 +20,9 @@ public class ProdutoUuidService {
 
     @Transactional
     public void saveAllInBatch(Collection<ProdutoUuid> produtos) {
+//        System.out.println("Inserindo produtosUuid no banco...");
         var contador = 0;
-        var start = System.currentTimeMillis();
+//        var start = System.currentTimeMillis();
         for (ProdutoUuid produto : produtos) {
             contador++;
             repository.getEntityManager().persist(produto);
@@ -30,9 +31,9 @@ public class ProdutoUuidService {
                 repository.getEntityManager().clear();
             }
         }
-        var end = System.currentTimeMillis();
-        System.out.println("Tempo total de inserção ProdutoUuid -> "
-                .concat(DecimalFormat.getNumberInstance().format(end - start) + "ms"));
+//        var end = System.currentTimeMillis();
+//        System.out.println("Tempo total de inserção ProdutoUuid -> "
+//                .concat(DecimalFormat.getNumberInstance().format(end - start) + "ms"));
         //vamos garantir q não fique nada no cache
         repository.flush();
         repository.getEntityManager().clear();

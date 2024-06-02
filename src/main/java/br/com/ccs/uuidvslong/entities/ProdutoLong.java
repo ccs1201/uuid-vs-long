@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class ProdutoLong {
 
     @Id
-    private Long id;
+    private Integer id;
     private String nome;
 }

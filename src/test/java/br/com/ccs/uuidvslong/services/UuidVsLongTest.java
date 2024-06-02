@@ -26,7 +26,7 @@ public class UuidVsLongTest {
     @Autowired
     private ConfigBean config;
     private List<UUID> uuids;
-    private List<Long> longs;
+    private List<Integer> longs;
 
     private static long start;
 
@@ -41,7 +41,7 @@ public class UuidVsLongTest {
         System.out.println("Criando ".concat(DecimalFormat.getIntegerInstance().format(config.getQtd_produtos())).concat(" Produtos..."));
         for (int i = 0; i < config.getQtd_produtos(); i++) {
             produtosUuid.add(new ProdutoUuid(UUID.randomUUID(), NOME + 1));
-            produtosLong.add(new ProdutoLong((long) i, NOME + i));
+            produtosLong.add(new ProdutoLong( i, NOME + i));
 
             if (i % 100 == 0) {
                 uuids.add(produtosUuid.get(i).getId());

@@ -19,8 +19,9 @@ public class ProdutoLongService {
 
     @Transactional
     public void saveAllInBatch(Collection<ProdutoLong> produtos) {
+//        System.out.println("Inserindo produtosLong no banco...");
         var contador = 0;
-        var start = System.currentTimeMillis();
+//        var start = System.currentTimeMillis();
         for (ProdutoLong produto : produtos) {
             contador++;
             repository.getEntityManager().persist(produto);
@@ -29,9 +30,9 @@ public class ProdutoLongService {
                 repository.getEntityManager().clear();
             }
         }
-        var end = System.currentTimeMillis();
-        System.out.println("Tempo total de inserção ProdutoLong -> "
-                .concat(DecimalFormat.getNumberInstance().format(end - start) + "ms"));
+//        var end = System.currentTimeMillis();
+//        System.out.println("Tempo total de inserção ProdutoLong -> "
+//                .concat(DecimalFormat.getNumberInstance().format(end - start) + "ms"));
         //vamos garantir q não fique nada no cache
         repository.flush();
         repository.getEntityManager().clear();
@@ -50,7 +51,7 @@ public class ProdutoLongService {
     }
 
     @Transactional(readOnly = true)
-    public boolean exists(Long id) {
+    public boolean exists(int id) {
         return repository.existsById(id);
     }
 }

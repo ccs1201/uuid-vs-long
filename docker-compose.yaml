@@ -10,6 +10,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     network_mode: host
+    volumes:
+      - ./postgresql.conf:/docker-entrypoint-initdb.d/postgresql.conf
+    command: 'postgres -c config_file=/docker-entrypoint-initdb.d/postgresql.conf'
     deploy:
       resources:
         limits:
